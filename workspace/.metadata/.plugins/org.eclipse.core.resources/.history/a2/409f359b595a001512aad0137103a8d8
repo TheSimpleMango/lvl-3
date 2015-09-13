@@ -1,0 +1,9 @@
+import javax.swing.JOptionPane;
+
+
+public class Hangman {
+	public static void main(String[] args) {
+		ArrayList<String> wordList = new ArrayList<String>(10);
+		JOptionPane.showMessageDialog(null, "");
+	}
+}
