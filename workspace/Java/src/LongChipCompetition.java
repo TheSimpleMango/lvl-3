@@ -14,25 +14,32 @@ public class LongChipCompetition {
 		
 		for (int i = 0; i < 4; i++) {
 			ArrayList<Chip> chips = x.theBeatles.get(i).getChips();
+			System.out.println("beatleNumber: " + i);
 			for (int j = 0; j < chips.size(); j++) {
-				chips.get(j).getLength();
+				System.out.println("compare: " + chips.get(j).getLength() + ", " + chipLength.get(i));
 				if (chips.get(j).getLength() > chipLength.get(i)) {
-					chipLength.set(i, chips.get(i).getLength());
+					chipLength.set(i, chips.get(j).getLength());
 				}
 			}
 		}
 		
-		int longestChip = 0;
+		double longestChip = 0;
+		int beatleNumber = 0;
 		
 		for (int i = 0; i < 4; i++) {
-			if (chipLength.get(i+1) > chipLength.get(i)) {
-				longestChip = i+1;
+			System.out.println(i);
+			System.out.println(longestChip);
+			if (chipLength.get(i) > longestChip) {
+				longestChip = chipLength.get(i);
+				beatleNumber = i;
+				System.out.println("longer:");
 			}
+			System.out.println(chipLength.get(i) + "\n");
 		}
 		
 		String beatleName = "";
 		
-		switch (longestChip) {
+		switch (beatleNumber) {
 		case 0:
 			beatleName = "George";
 			break;
