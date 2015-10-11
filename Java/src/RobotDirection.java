@@ -1,6 +1,4 @@
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Stack;
 
 
@@ -18,21 +16,19 @@ public class RobotDirection {
 	public static void main(String[] args){
 		Stack<String> instructionStack = new Stack<String>();
 		
-		//FileReader fr = null;
 		char c = ' ';
 		String s = "";
 		try {
-			FileReader fr = new FileReader("stackbot.txt");
+			FileReader fr = new FileReader("InstructionTest.txt");
 			while ((c = (char) fr.read()) != (char) -1) {
-				//System.out.println("char: " + c);
 				if (c != '\n') {
 					s += c;
 				}
 				else {
-					//System.out.println("string: " + s);
+					System.out.println("string: " + s);
 					instructionStack.push(s);
-					
 					s = "";
+					System.out.println(instructionStack.peek());
 				}
 			}
 		} catch (Exception e) {
@@ -59,7 +55,6 @@ public class RobotDirection {
 		
 		Stack<Instruction> instructions = new Stack<Instruction>();
 		int index = instructionStack.size();
-		System.out.println(index);
 		for (int i = 0; i < index; i++) {
 			if (Character.isDigit(instructionStack.peek().charAt(0))) {
 				System.out.println("Instruction-" + i);
@@ -92,13 +87,13 @@ public class RobotDirection {
 				longitude += y;
 				break;
 			case 1:
-				latitude -= y;
+				latitude -= x;
 				break;
 			case 2:
 				longitude -= y;
 				break;
 			case 3:
-				latitude += y;
+				latitude += x;
 				break;
 
 			default:
